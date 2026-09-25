@@ -6,10 +6,10 @@
 <title>Estudo de redesign San Martín</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;700;800;900&family=Atkinson+Hyperlegible+Next:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--cielo:#0A8FD6;--cielo-texto:#075E9C;--tinta:#13233F;--niebla:#EDF3F8;--linea:#D3DEE8;--naranja:#F07F1A;--violeta:#4B2A86;--gris:#4A5A70;--papel:#fff;
---display:"Schibsted Grotesk",system-ui,sans-serif;--body:"Atkinson Hyperlegible Next",system-ui,sans-serif}
+--display:"Hanken Grotesk",system-ui,sans-serif;--body:"Hanken Grotesk",system-ui,sans-serif}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--tinta:#E8EEF6;--niebla:#16233A;--linea:#2A3B58;--gris:#A9B8CC;--papel:#0E1A2E;--cielo-texto:#7CC8F5}}
 :root[data-theme="dark"]{--tinta:#E8EEF6;--niebla:#16233A;--linea:#2A3B58;--gris:#A9B8CC;--papel:#0E1A2E;--cielo-texto:#7CC8F5}
 *{box-sizing:border-box}
@@ -65,6 +65,7 @@ footer{padding:40px 0 60px;color:var(--gris);font-size:.92rem}
     <div class="acoes">
       <a class="btn" href="proposta.html">Abrir a proposta (home nova)</a>
       <a class="btn sec" href="https://sanmartin.gob.ar/" target="_blank" rel="noopener">Ver o site atual</a>
+      <a class="btn sec" href="proposta-v1.html">Ver a 1ª versão</a>
     </div>
   </div>
 </header>
@@ -114,18 +115,18 @@ footer{padding:40px 0 60px;color:var(--gris);font-size:.92rem}
 <section>
   <div class="wrap">
     <h2>Sistema visual proposto</h2>
-    <p class="lead">Não troca a marca, sobe o nível dela. O arco do logo vira a máscara das fotos; o asterisco laranja da campanha vira a assinatura visual (aparece só em 3 lugares).</p>
+    <p class="lead">Não troca a marca, sobe o nível dela. O arco do logo vira o recorte entre as seções (como a onda do Helsinki Design System) e a moldura das fotos; o asterisco laranja da campanha aparece só em dois lugares. Uma família tipográfica, quase nenhuma borda, muito respiro.</p>
     <div class="cores">
-      <div class="cor"><div style="background:#0A8FD6"></div><p><b>Cielo</b>#0A8FD6 marca, fundos</p></div>
-      <div class="cor"><div style="background:#075E9C"></div><p><b>Cielo texto</b>#075E9C links (6,4:1)</p></div>
-      <div class="cor"><div style="background:#13233F"></div><p><b>Tinta</b>#13233F texto e blocos</p></div>
-      <div class="cor"><div style="background:#F07F1A"></div><p><b>Naranja</b>#F07F1A asterisco, foco</p></div>
-      <div class="cor"><div style="background:#EDF3F8"></div><p><b>Niebla</b>#EDF3F8 seções</p></div>
-      <div class="cor"><div style="background:#4B2A86"></div><p><b>Violeta</b>#4B2A86 cultura, mínimo</p></div>
+      <div class="cor"><div style="background:#0A8FD6"></div><p><b>Cielo</b>#0A8FD6 marca, busca, campanha</p></div>
+      <div class="cor"><div style="background:#0667A8"></div><p><b>Cielo texto</b>#0667A8 links e categorias</p></div>
+      <div class="cor"><div style="background:#0E1B33"></div><p><b>Tinta</b>#0E1B33 texto e blocos</p></div>
+      <div class="cor"><div style="background:#516074"></div><p><b>Tinta 2</b>#516074 texto secundário</p></div>
+      <div class="cor"><div style="background:#F3F6F9"></div><p><b>Niebla</b>#F3F6F9 fundos suaves</p></div>
+      <div class="cor"><div style="background:#F07F1A"></div><p><b>Naranja</b>#F07F1A asterisco e foco</p></div>
     </div>
     <div class="tipos">
-      <div class="tipo"><small>Títulos</small><div class="amostra" style="font-family:var(--display);font-weight:900;letter-spacing:-.04em">Schibsted Grotesk</div><p style="color:var(--gris);font-size:.95rem;margin:0">Grotesca de jornal, firme e cívica. Pesos 800–900 com tracking negativo nos títulos. Substitui a FF Clan (paga) sem perder o tom.</p></div>
-      <div class="tipo"><small>Texto</small><div class="amostra" style="font-family:var(--body)">Atkinson Hyperlegible</div><p style="color:var(--gris);font-size:.95rem;margin:0">Criada pelo Braille Institute para baixa visão: letras que não se confundem (I, l, 1). Base de 18px.</p></div>
+      <div class="tipo"><small>Uma família só</small><div class="amostra" style="font-family:var(--display);font-weight:800;letter-spacing:-.045em">Hanken Grotesk</div><p style="color:var(--gris);font-size:.95rem;margin:0">Grotesca aberta e humana, legível em tamanho pequeno e com peso de cartaz no 800. Substitui a FF Clan (paga) sem perder o tom da marca.</p></div>
+      <div class="tipo"><small>Escala</small><div class="amostra" style="font-family:var(--display);font-weight:800;letter-spacing:-.04em">93 / 54 / 25 / 18</div><p style="color:var(--gris);font-size:.95rem;margin:0">Título do hero, títulos de seção, itens de lista e texto corrido (base de 18px, entrelinha 1,6).</p></div>
     </div>
   </div>
 </section>
@@ -134,14 +135,13 @@ footer{padding:40px 0 60px;color:var(--gris);font-size:.92rem}
   <div class="wrap">
     <h2>O que a home nova tem</h2>
     <ul class="problemas">
-      <li><b>Hero com busca inteligente</b><span>Sugestões ao digitar (sem acento também funciona), atalhos “Lo más buscado” e, se não achar, oferece WhatsApp.</span></li>
-      <li><b>Trámites frecuentes em lista clara</b><span>Os mesmos 6 do site atual, agora com uma linha explicando o que cada um faz.</span></li>
-      <li><b>Faixa “Hoy en San Martín”</b><span>Coleta, farmácias de turno e cursos: o que muda no dia a dia.</span></li>
-      <li><b>Programas por público (abas)</b><span>Infancias, Juventudes, Mayores, Discapacidad, Mujeres, PyMEs, com texto oficial e contato; abaixo, os 18 programas completos.</span></li>
-      <li><b>Novedades editoriais</b><span>1 destaque grande + 3 notas; manchetes reais do site.</span></li>
-      <li><b>Campanha com texto real</b><span>“Más comunidad, menos basura” em HTML, não em imagem.</span></li>
-      <li><b>Canais e telefones clicáveis</b><span>147, 911, 107, 100 e 103 viram botões de ligar; WhatsApp flutuante.</span></li>
-      <li><b>Preferências de leitura</b><span>Botões de texto maior e alto contraste; atalho “pular para o conteúdo”; navegação por teclado nas abas.</span></li>
+      <li><b>Hero de foto inteira com busca</b><span>Foto de rua do bairro, título grande e busca com sugestões ao digitar (acentos opcionais); se não achar, oferece ajuda.</span></li>
+      <li><b>Trámites em lista editorial</b><span>Os 6 do site atual, cada um com uma linha dizendo o que resolve. Sem cards nem ícones decorativos.</span></li>
+      <li><b>“Programas para vos” tipográfico</b><span>Seis públicos em letras grandes; ao passar o mouse (ou tocar) a foto e o texto trocam. Os demais programas ficam numa linha abaixo, com link para os 18.</span></li>
+      <li><b>Notícias editoriais</b><span>1 destaque grande e 3 manchetes, todas reais do site.</span></li>
+      <li><b>Campanha com texto real</b><span>“Más comunidad, menos basura” em HTML, não queimado na imagem.</span></li>
+      <li><b>Ajuda e telefones clicáveis</b><span>WhatsApp, 147, centros de atenção e turnos; 147, 911, 107, 100 e 103 ligam com um toque.</span></li>
+      <li><b>Acessibilidade</b><span>Texto maior e alto contraste no rodapé, “pular para o conteúdo”, foco visível e navegação por teclado no seletor de programas.</span></li>
     </ul>
   </div>
 </section>

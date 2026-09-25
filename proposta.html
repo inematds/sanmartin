@@ -4,267 +4,241 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>San Martín Rediseño</title>
-<meta name="description" content="Propuesta conceptual de rediseño de la home del Municipio de San Martín: búsqueda primero, trámites por tarea, accesible y mobile-first.">
+<meta name="description" content="Propuesta conceptual de rediseño de la home del Municipio de San Martín.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Atkinson+Hyperlegible+Next:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --cielo:#0A8FD6;      /* azul de marca (gráficos, fondos) */
-  --cielo-texto:#075E9C;/* azul para texto y links: 6.4:1 sobre blanco */
-  --tinta:#13233F;      /* azul noche para texto y bloques */
-  --niebla:#EDF3F8;     /* fondo frío de secciones */
-  --linea:#D3DEE8;
-  --naranja:#F07F1A;    /* el asterisco de "Más comunidad*" */
-  --violeta:#4B2A86;    /* acento cultural, uso mínimo */
+  --tinta:#0E1B33;
+  --tinta-2:#516074;   /* texto secundario, 6.3:1 sobre blanco */
+  --cielo:#0A8FD6;     /* marca */
+  --cielo-texto:#0667A8;
   --papel:#FFFFFF;
-  --gris:#4A5A70;       /* texto secundario: 7:1 sobre blanco */
-  --display:"Schibsted Grotesk", system-ui, sans-serif;
-  --body:"Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, sans-serif;
-  --r-s:10px; --r-m:18px; --r-l:28px;
-  --max:1240px;
+  --niebla:#F3F6F9;
+  --linea:#E1E7EE;
+  --naranja:#F07F1A;
+  --f:"Hanken Grotesk",system-ui,sans-serif;
+  --max:1200px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--body);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}
-a{color:var(--cielo-texto);text-underline-offset:3px}
-:focus-visible{outline:3px solid var(--naranja);outline-offset:3px;border-radius:6px}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+body{margin:0;background:var(--papel);color:var(--tinta);font:400 18px/1.6 var(--f);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.03em;line-height:1.02}
+:focus-visible{outline:3px solid var(--naranja);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:16px;top:-60px;background:var(--tinta);color:#fff;padding:10px 16px;border-radius:8px;z-index:99}
 .skip:focus{top:12px}
-h1,h2,h3{font-family:var(--display);line-height:1.08;letter-spacing:-.02em;margin:0}
-h2{font-size:clamp(1.75rem,3.2vw,2.6rem);font-weight:800}
-h3{font-size:1.2rem;font-weight:700;letter-spacing:-.01em}
-p{margin:0}
-.btn{white-space:nowrap;display:inline-flex;align-items:center;gap:10px;font:700 1rem/1 var(--display);padding:14px 20px;border-radius:999px;text-decoration:none;border:2px solid transparent;cursor:pointer}
-.btn-primario{background:var(--tinta);color:#fff}
-.btn-primario:hover{background:#0B1830}
-.btn-claro{background:#fff;color:var(--tinta);border-color:var(--linea)}
-.btn-claro:hover{border-color:var(--tinta)}
-.aviso-concepto{background:var(--violeta);color:#fff;font-size:.9rem;text-align:center;padding:8px 16px}
-.aviso-concepto a{color:#fff;font-weight:700}
+.enlace{font-weight:700;text-decoration:none;border-bottom:2px solid currentColor;padding-bottom:2px}
+.enlace:hover{color:var(--cielo-texto)}
 
-/* ---------- utilidades superiores ---------- */
-.util{background:var(--tinta);color:#DCE6F0;font-size:.9rem}
-.util .wrap{display:flex;gap:24px;justify-content:space-between;align-items:center;min-height:42px;flex-wrap:wrap}
-.util a{color:#fff;text-decoration:none;font-weight:700}
-.util-izq{display:flex;gap:22px;flex-wrap:wrap}
-.util-der{display:flex;gap:16px}
-.util-der button{background:none;border:1px solid #3A4D6E;color:#fff;border-radius:999px;padding:4px 12px;font:600 .82rem var(--body);cursor:pointer}
+/* aviso */
+.aviso{background:var(--niebla);color:var(--tinta-2);font-size:.85rem;text-align:center;padding:7px 16px}
+.aviso a{color:var(--tinta);font-weight:600}
 
-/* ---------- header ---------- */
-header.sitio{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--linea)}
-header.sitio .wrap{display:flex;align-items:center;gap:24px;min-height:76px}
-.logo{display:flex;flex-direction:column;align-items:flex-start;text-decoration:none;color:var(--tinta);line-height:1}
-.logo svg{width:66px;height:18px;margin-left:6px}
-.logo span{font:800 1.45rem/1 var(--display);letter-spacing:-.03em;margin-top:-2px;white-space:nowrap}
-nav.principal ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
-nav.principal a{display:block;padding:10px 12px;border-radius:999px;color:var(--tinta);text-decoration:none;font:600 1rem var(--display)}
-nav.principal a:hover{background:var(--niebla)}
-nav.principal a[aria-current]{background:var(--niebla);box-shadow:inset 0 -3px 0 var(--cielo)}
-.header-acciones{margin-left:auto;display:flex;gap:10px;align-items:center}
-.menu-btn{display:none;background:none;border:2px solid var(--linea);border-radius:12px;width:48px;height:48px;cursor:pointer}
-.menu-btn svg{width:24px;height:24px}
+/* header */
+header{background:var(--papel);position:sticky;top:0;z-index:40;transition:box-shadow .2s}
+header.con-sombra{box-shadow:0 1px 0 var(--linea)}
+header .wrap{display:flex;align-items:center;gap:48px;height:84px}
+.logo{display:inline-flex;flex-direction:column;text-decoration:none;line-height:1;color:var(--tinta)}
+.logo svg{width:60px;height:16px;margin-left:5px;color:var(--cielo)}
+.logo span{font-weight:800;font-size:1.4rem;letter-spacing:-.04em;white-space:nowrap;margin-top:-1px}
+nav ul{display:flex;gap:34px;list-style:none;margin:0;padding:0}
+nav a{text-decoration:none;font-weight:600;font-size:1rem;padding:8px 0;border-bottom:2px solid transparent}
+nav a:hover{border-color:var(--tinta)}
+.h-der{margin-left:auto;display:flex;align-items:center;gap:28px}
+.h-der .tel{text-decoration:none;font-weight:600;font-size:.98rem;color:var(--tinta-2)}
+.h-der .tel b{color:var(--tinta)}
+.ingresar{background:var(--tinta);color:#fff;text-decoration:none;font-weight:700;font-size:.98rem;padding:12px 22px;border-radius:999px;white-space:nowrap}
+.ingresar:hover{background:#1C2E4F}
+.menu{display:none;background:none;border:0;width:44px;height:44px;margin-right:-10px;cursor:pointer;color:var(--tinta)}
 
-/* ---------- hero ---------- */
-.hero{position:relative;background:var(--niebla);overflow:hidden}
-.hero .wrap>*{min-width:0}
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;align-items:center;padding-top:64px;padding-bottom:72px}
-.hero h1{font-size:clamp(2.6rem,6vw,4.8rem);font-weight:900;letter-spacing:-.045em;line-height:.98}
-.hero h1 .ast{color:var(--naranja);display:inline-block;transform:translateY(-.08em);margin-left:.02em}
-.hero-bajada{font-size:1.2rem;color:var(--gris);margin-top:18px;max-width:34ch}
-.buscador{margin-top:32px;position:relative}
-.buscador label{font:700 1rem var(--display);display:block;margin-bottom:10px}
-.campo{display:flex;align-items:center;background:#fff;border:2px solid var(--tinta);border-radius:999px;padding:6px 6px 6px 22px;box-shadow:0 18px 40px -22px rgba(19,35,63,.45)}
-.campo svg{width:24px;height:24px;flex:none;color:var(--gris)}
-.campo input{flex:1;min-width:0;border:0;outline:0;font:500 1.15rem var(--body);padding:14px 12px;background:transparent;color:var(--tinta)}
+/* hero */
+.hero{position:relative;min-height:min(86vh,820px);display:flex;align-items:flex-end;color:#fff;isolation:isolate}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(90deg,rgba(10,20,40,.82) 0%,rgba(10,20,40,.55) 42%,rgba(10,20,40,0) 75%),
+  linear-gradient(0deg,rgba(10,20,40,.55) 0%,rgba(10,20,40,0) 45%)}
+.hero .wrap{width:100%;padding-bottom:180px;padding-top:120px}
+.hero h1{font-size:clamp(3rem,6.6vw,5.8rem);max-width:13ch;letter-spacing:-.05em;line-height:.95}
+.hero-sub{font-size:1.25rem;max-width:36ch;margin-top:22px;color:rgba(255,255,255,.88)}
+.buscar{margin-top:40px;max-width:640px;position:relative}
+.campo{display:flex;background:#fff;border-radius:16px;padding:8px;box-shadow:0 30px 60px -25px rgba(0,0,0,.55)}
 .campo:focus-within{outline:3px solid var(--naranja);outline-offset:3px}
-.campo button{background:var(--cielo);border:0;border-radius:999px;font:800 1.05rem var(--display);padding:16px 26px;cursor:pointer;color:#0B1830}
-.campo button:hover{background:#34A6E4}
-.sugerencias{position:absolute;left:0;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--linea);border-radius:var(--r-m);box-shadow:0 24px 48px -20px rgba(19,35,63,.35);list-style:none;margin:0;padding:8px;z-index:20;display:none}
-.sugerencias.abierto{display:block}
-.sugerencias a{display:flex;justify-content:space-between;gap:16px;padding:12px 14px;border-radius:12px;text-decoration:none;color:var(--tinta)}
-.sugerencias a:hover,.sugerencias a:focus{background:var(--niebla)}
-.sugerencias small{color:var(--gris)}
-.atajos{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;align-items:center}
-.atajos span{color:var(--gris);font-size:.95rem;margin-right:2px}
-.atajos a{font:600 .95rem var(--display);color:var(--tinta);background:#fff;border:1px solid var(--linea);padding:8px 14px;border-radius:999px;text-decoration:none}
-.atajos a:hover{border-color:var(--tinta)}
-.hero-foto{position:relative;aspect-ratio:4/4.3}
-.hero-foto img{width:100%;height:100%;object-fit:cover;border-radius:50% 50% var(--r-l) var(--r-l) / 34% 34% var(--r-l) var(--r-l)}
-.hero-foto figcaption{position:absolute;left:-28px;bottom:32px;background:#fff;border-radius:var(--r-m);padding:14px 18px;box-shadow:0 20px 40px -20px rgba(19,35,63,.4);max-width:260px;font-size:.95rem}
-.hero-foto figcaption strong{display:block;font:800 1.05rem var(--display)}
-.asterisco-gigante{position:absolute;right:-50px;top:-40px;width:220px;color:var(--naranja);opacity:.95;pointer-events:none}
+.campo label{display:flex;align-items:center;flex:1;min-width:0;padding-left:16px;gap:12px;color:var(--tinta-2)}
+.campo svg{width:22px;height:22px;flex:none}
+.campo input{flex:1;min-width:0;border:0;outline:0;background:none;font:500 1.15rem var(--f);color:var(--tinta);padding:16px 4px}
+.campo input::placeholder{color:#7A8698}
+.campo button{border:0;background:var(--cielo);color:#06182E;font:700 1.05rem var(--f);padding:0 28px;border-radius:10px;cursor:pointer}
+.campo button:hover{background:#2BA1E2}
+.sug{position:absolute;left:0;right:0;top:calc(100% + 10px);background:#fff;color:var(--tinta);border-radius:16px;padding:8px;list-style:none;margin:0;box-shadow:0 30px 60px -20px rgba(0,0,0,.4);display:none;z-index:5}
+.sug.abierto{display:block}
+.sug a{display:flex;justify-content:space-between;gap:16px;padding:12px 14px;border-radius:10px;text-decoration:none}
+.sug a:hover,.sug a:focus{background:var(--niebla)}
+.sug small{color:var(--tinta-2)}
+.populares{margin-top:22px;font-size:1rem;color:rgba(255,255,255,.8)}
+.populares a{color:#fff;font-weight:600;text-decoration:underline;text-decoration-color:rgba(255,255,255,.45);text-underline-offset:4px;margin-left:14px}
+.populares a:hover{text-decoration-color:#fff}
+.arco{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:120px;display:block}
 
-/* ---------- trámites ---------- */
-section{padding:88px 0}
-.cabecera{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:36px;flex-wrap:wrap}
-.cabecera p{color:var(--gris);max-width:52ch;margin-top:10px}
-.tramites{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--tinta)}
-.tramite{display:grid;grid-template-columns:52px 1fr 24px;gap:18px;align-items:start;padding:26px 22px 26px 0;border-bottom:1px solid var(--linea);text-decoration:none;color:var(--tinta)}
-.tramite:not(:nth-child(3n+1)){padding-left:22px;border-left:1px solid var(--linea)}
-.tramite .ico{width:52px;height:52px;border-radius:14px;background:var(--niebla);display:grid;place-items:center;color:var(--cielo-texto)}
-.tramite .ico svg{width:28px;height:28px}
-.tramite h3{margin-bottom:6px}
-.tramite p{color:var(--gris);font-size:.98rem;line-height:1.45}
-.tramite .flecha{width:24px;height:24px;margin-top:4px;color:var(--gris);transition:transform .2s}
-.tramite:hover h3{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
-.tramite:hover .flecha{transform:translateX(4px);color:var(--tinta)}
-.tramites-pie{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
+/* trámites */
+.tramites{padding:56px 0 120px}
+.tramites .wrap{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:start}
+.intro{position:sticky;top:124px}
+.intro h2,.sec-titulo{font-size:clamp(2.2rem,4vw,3.4rem)}
+.intro p{color:var(--tinta-2);margin:20px 0 28px;max-width:34ch;font-size:1.1rem}
+.lista{list-style:none;margin:0;padding:0;border-top:1px solid var(--linea)}
+.lista a{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:30px 0;border-bottom:1px solid var(--linea);text-decoration:none}
+.lista h3{font-size:1.55rem;font-weight:700;letter-spacing:-.025em}
+.lista p{color:var(--tinta-2);margin-top:6px}
+.lista .fl{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--niebla);transition:background .2s,transform .2s}
+.lista .fl svg{width:20px;height:20px}
+.lista a:hover .fl{background:var(--tinta);color:#fff;transform:translateX(4px)}
+.lista a:hover h3{color:var(--cielo-texto)}
 
-/* ---------- hoy ---------- */
-.hoy{background:var(--tinta);color:#fff;padding:0}
-.hoy .wrap{display:grid;grid-template-columns:auto repeat(3,1fr);gap:0;align-items:stretch}
-.hoy-titulo{padding:28px 32px 28px 0;display:flex;align-items:center;font:800 1.3rem var(--display)}
-.hoy-item{padding:26px 28px;border-left:1px solid #2D4064}
-.hoy-item small{display:block;color:#AFC3DA;font-size:.88rem}
-.hoy-item strong{font:700 1.08rem var(--display)}
-.hoy-item a{color:#8FD3FF}
+/* para vos */
+.vos{background:var(--tinta);color:#fff;position:relative;padding:40px 0 130px}
+.vos .arco-sup{position:absolute;left:0;right:0;top:-119px;width:100%;height:120px;display:block}
+.vos .cab{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:56px;flex-wrap:wrap}
+.vos .cab p{color:rgba(255,255,255,.72);max-width:38ch;font-size:1.1rem}
+.vos-grid{display:grid;grid-template-columns:6fr 5fr;gap:80px;align-items:start}
+.publicos{list-style:none;margin:0;padding:0}
+.publicos button{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:18px;width:100%;cursor:pointer;padding:10px 0;font-weight:700;font-size:clamp(1.7rem,3.3vw,2.75rem);letter-spacing:-.035em;line-height:1.1;color:rgba(255,255,255,.38);transition:color .25s}
+.publicos button:hover{color:rgba(255,255,255,.75)}
+.publicos button[aria-selected="true"]{color:#fff}
+.publicos .ast{width:.6em;height:.6em;flex:none;color:var(--naranja);opacity:0;transform:rotate(-60deg) scale(.5);transition:opacity .25s,transform .35s}
+.publicos button[aria-selected="true"] .ast{opacity:1;transform:none}
+.publicos button:focus-visible{outline:3px solid var(--naranja);outline-offset:4px}
+.ficha img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:220px 220px 20px 20px}
+.ficha p{color:rgba(255,255,255,.8);margin:26px 0 20px;font-size:1.08rem}
+.ficha .dato{font-size:.98rem;color:rgba(255,255,255,.66);margin:-8px 0 22px}
+.ficha .dato a{color:#fff}
+.ficha .enlace{color:#fff}
+.todos{margin-top:64px;padding-top:28px;border-top:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.72)}
+.todos a{color:#fff}
 
-/* ---------- programas ---------- */
-.programas{background:var(--niebla)}
-.pestanas{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
-.pestanas button{font:700 1rem var(--display);background:#fff;color:var(--tinta);border:2px solid var(--linea);border-radius:999px;padding:11px 18px;cursor:pointer}
-.pestanas button:hover{border-color:var(--tinta)}
-.pestanas button[aria-selected="true"]{background:var(--tinta);color:#fff;border-color:var(--tinta)}
-.panel{display:grid;grid-template-columns:1.1fr 1fr;background:#fff;border-radius:var(--r-l);overflow:hidden;min-height:400px}
-.panel[hidden]{display:none}
-.panel img{width:100%;height:100%;object-fit:cover}
-.panel-texto{padding:44px;display:flex;flex-direction:column;gap:18px}
-.panel-texto h3{font-size:clamp(1.6rem,2.6vw,2.2rem);font-weight:800}
-.panel-texto p{color:var(--gris);max-width:48ch}
-.panel-datos{border-top:1px solid var(--linea);padding-top:16px;font-size:.98rem}
-.panel-datos a{font-weight:700}
-.panel-texto .btn{align-self:flex-start;margin-top:auto}
-.todos{margin-top:48px}
-.todos h3{margin-bottom:16px}
-.todos ul{list-style:none;padding:0;margin:0;columns:3;column-gap:32px}
-.todos li{break-inside:avoid;border-bottom:1px solid var(--linea)}
-.todos a{display:block;padding:12px 0;color:var(--tinta);text-decoration:none;font-weight:500}
-.todos a:hover{color:var(--cielo-texto);text-decoration:underline}
+/* noticias */
+.noticias{padding:120px 0}
+.cab-fila{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:48px;flex-wrap:wrap}
+.not-grid{display:grid;grid-template-columns:7fr 5fr;gap:56px}
+.destacada a{text-decoration:none}
+.destacada img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:20px}
+.cat{display:block;font-size:.9rem;font-weight:700;color:var(--cielo-texto);margin:22px 0 8px}
+.destacada h3{font-size:clamp(1.6rem,2.6vw,2.2rem);letter-spacing:-.03em;line-height:1.1}
+.destacada a:hover h3,.notas a:hover h3{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
+.notas{list-style:none;margin:0;padding:0}
+.notas li+li{border-top:1px solid var(--linea)}
+.notas a{display:block;padding:26px 0;text-decoration:none}
+.notas li:first-child a{padding-top:0}
+.notas .cat{margin-top:0}
+.notas h3{font-size:1.3rem;font-weight:700;letter-spacing:-.02em;line-height:1.25}
 
-/* ---------- novedades ---------- */
-.noticias{display:grid;grid-template-columns:1.35fr 1fr;gap:40px}
-.nota-principal a{text-decoration:none;color:var(--tinta)}
-.nota-principal img{aspect-ratio:16/10;object-fit:cover;border-radius:var(--r-l);width:100%}
-.nota-principal h3{font-size:clamp(1.5rem,2.4vw,2rem);font-weight:800;margin-top:20px}
-.nota-principal a:hover h3{text-decoration:underline;text-decoration-thickness:2px}
-.etiqueta{display:inline-block;font:700 .85rem var(--display);color:var(--cielo-texto);margin-top:18px}
-.fecha{color:var(--gris);font-size:.92rem;margin-top:8px}
-.lista-notas{list-style:none;margin:0;padding:0;border-top:2px solid var(--tinta)}
-.lista-notas li{border-bottom:1px solid var(--linea)}
-.lista-notas a{display:block;padding:22px 0;text-decoration:none;color:var(--tinta)}
-.lista-notas a:hover h3{text-decoration:underline}
-.lista-notas .etiqueta{margin-top:0;margin-bottom:6px}
-.lista-notas h3{font-size:1.18rem;line-height:1.3}
+/* campaña */
+.campana{display:grid;grid-template-columns:1fr 1fr;min-height:560px;background:var(--cielo)}
+.campana img{width:100%;height:100%;object-fit:cover}
+.camp-txt{padding:80px clamp(32px,6vw,96px);display:flex;flex-direction:column;justify-content:center;color:#06182E}
+.camp-txt h2{font-size:clamp(2.6rem,4.4vw,4.4rem);letter-spacing:-.05em;line-height:.95}
+.camp-txt h2 span{display:block;font-weight:400}
+.camp-txt h2 .l1{font-weight:800;white-space:nowrap}
+.camp-txt h2 svg{width:.55em;height:.55em;color:var(--naranja);vertical-align:.55em;margin-left:.04em}
+.camp-txt p{font-size:1.15rem;max-width:36ch;margin:28px 0 32px}
+.camp-txt .enlace{align-self:flex-start;font-size:1.05rem}
 
-/* ---------- campaña ---------- */
-.campana{padding:0 0 88px}
-.campana .caja{position:relative;display:grid;grid-template-columns:1fr 1fr;background:var(--cielo);border-radius:var(--r-l);overflow:hidden;color:#0B1830}
-.campana-texto{padding:56px;display:flex;flex-direction:column;gap:18px;justify-content:center}
-.campana-texto h2{font-size:clamp(2.2rem,4.4vw,3.6rem);font-weight:900;letter-spacing:-.04em}
-.campana-texto h2 span{display:block;font-weight:500}
-.campana-texto p{font-size:1.12rem;max-width:40ch}
-.campana img{height:100%;width:100%;object-fit:cover;min-height:360px}
-.campana .ast-campana{position:absolute;left:calc(50% - 70px);top:32px;width:140px;color:var(--naranja)}
+/* ayuda */
+.ayuda{padding:120px 0 110px}
+.ayuda .wrap{display:grid;grid-template-columns:5fr 7fr;gap:80px}
+.ayuda .intro{position:static}
+.canales{display:grid;grid-template-columns:1fr 1fr;gap:44px 48px}
+.canal{text-decoration:none;display:block}
+.canal svg{width:26px;height:26px;color:var(--cielo-texto);margin-bottom:14px}
+.canal h3{font-size:1.3rem;font-weight:700;letter-spacing:-.02em}
+.canal p{color:var(--tinta-2);margin-top:4px}
+.canal:hover h3{color:var(--cielo-texto)}
+.boletin{grid-column:2;display:flex;gap:10px;margin-top:8px;flex-wrap:wrap;padding-top:40px;border-top:1px solid var(--linea)}
+.boletin label{flex-basis:100%;font-weight:700;font-size:1.1rem}
+.boletin small{flex-basis:100%;color:var(--tinta-2);font-size:.95rem}
+.boletin input{flex:1;min-width:220px;border:1.5px solid #8894A6;border-radius:12px;padding:15px 16px;font:500 1.05rem var(--f);color:var(--tinta)}
+.boletin button{border:0;background:var(--tinta);color:#fff;font:700 1rem var(--f);padding:0 24px;border-radius:12px;cursor:pointer;min-height:54px}
 
-/* ---------- boletín + contacto ---------- */
-.contacto{background:var(--niebla)}
-.contacto .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px}
-.boletin form{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
-.boletin label{flex-basis:100%;font-weight:700}
-.boletin input{flex:1;min-width:220px;font:500 1.05rem var(--body);padding:15px 18px;border:2px solid var(--gris);border-radius:999px;background:#fff;color:var(--tinta)}
-.boletin p{color:var(--gris);margin-top:12px;max-width:46ch}
-.canales{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.canal{background:#fff;border-radius:var(--r-m);padding:22px;text-decoration:none;color:var(--tinta);border:1px solid var(--linea)}
-.canal:hover{border-color:var(--tinta)}
-.canal strong{display:block;font:800 1.15rem var(--display);margin-top:10px}
-.canal span{color:var(--gris);font-size:.95rem}
-.canal svg{width:28px;height:28px;color:var(--cielo-texto)}
+/* emergencias + pie */
+footer{background:var(--tinta);color:rgba(255,255,255,.72);font-size:.96rem}
+.emerg{border-bottom:1px solid rgba(255,255,255,.12)}
+.emerg .wrap{display:flex;align-items:center;gap:40px;padding-top:44px;padding-bottom:44px;flex-wrap:wrap}
+.emerg h2{font-size:1.2rem;font-weight:700;color:#fff;letter-spacing:-.01em;margin-right:auto}
+.emerg ul{display:flex;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.emerg li+li{border-left:1px solid rgba(255,255,255,.14)}
+.emerg a{display:block;text-decoration:none;padding:0 28px}
+.emerg b{display:block;font-size:2.1rem;font-weight:800;color:#fff;letter-spacing:-.04em;line-height:1}
+.emerg small{font-size:.88rem}
+.emerg a:hover b{color:var(--cielo)}
+.pie .wrap{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-top:64px;padding-bottom:40px}
+.pie h3{font-size:1rem;color:#fff;letter-spacing:0;margin-bottom:16px}
+.pie ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.pie a{text-decoration:none}
+.pie a:hover{color:#fff;text-decoration:underline}
+.pie .logo{color:#fff;margin-bottom:22px}
+.legal .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:22px;padding-bottom:32px;border-top:1px solid rgba(255,255,255,.12);font-size:.88rem}
+.legal button{background:none;border:0;color:rgba(255,255,255,.8);font:600 .88rem var(--f);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:0;margin-left:16px}
+.legal button[aria-pressed="true"]{color:#fff}
 
-/* ---------- emergencias + footer ---------- */
-.emergencias{background:var(--tinta);color:#fff;padding:40px 0}
-.emergencias .wrap{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
-.emergencias h2{font-size:1.5rem}
-.emergencias ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.emergencias a{display:flex;flex-direction:column;background:#1E3257;border-radius:var(--r-m);padding:16px 18px;color:#fff;text-decoration:none}
-.emergencias a:hover{background:#29406B}
-.emergencias b{font:900 2rem/1 var(--display);letter-spacing:-.03em}
-.emergencias small{color:#C8D6E6;font-size:.92rem;margin-top:6px}
-footer{background:#0C182E;color:#C8D6E6;padding:56px 0 32px;font-size:.96rem}
-footer .grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:40px}
-footer h3{color:#fff;font-size:1rem;margin-bottom:14px}
-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-footer a{color:#C8D6E6;text-decoration:none}
-footer a:hover{color:#fff;text-decoration:underline}
-footer .logo{color:#fff}
-footer .legal{border-top:1px solid #22355A;margin-top:44px;padding-top:24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.88rem}
-.btn-subir{position:fixed;right:20px;bottom:20px;z-index:30;width:52px;height:52px;border-radius:50%;background:#25D366;color:#0C2A18;display:grid;place-items:center;box-shadow:0 12px 30px -10px rgba(0,0,0,.4);text-decoration:none}
-.btn-subir svg{width:28px;height:28px}
-
-/* ---------- entrada del hero (un solo momento) ---------- */
+/* un solo momento de entrada */
 @media (prefers-reduced-motion:no-preference){
-  .hero h1,.hero-bajada,.buscador,.atajos{animation:sube .7s cubic-bezier(.2,.7,.2,1) both}
-  .hero-bajada{animation-delay:.08s}.buscador{animation-delay:.16s}.atajos{animation-delay:.24s}
-  .hero-foto img{animation:revela 1s cubic-bezier(.2,.7,.2,1) both .1s}
-  .asterisco-gigante{animation:gira 1.4s cubic-bezier(.2,.7,.2,1) both .3s}
+  .hero>img{animation:acerca 1.6s cubic-bezier(.2,.7,.2,1) both}
+  .hero h1,.hero-sub,.buscar,.populares{animation:sube .8s cubic-bezier(.2,.7,.2,1) both}
+  .hero-sub{animation-delay:.1s}.buscar{animation-delay:.18s}.populares{animation-delay:.26s}
+  .ficha img{transition:opacity .3s}
 }
-@keyframes sube{from{opacity:0;transform:translateY(18px)}}
-@keyframes revela{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
-@keyframes gira{from{opacity:0;transform:rotate(-90deg) scale(.6)}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+@keyframes sube{from{opacity:0;transform:translateY(20px)}}
+@keyframes acerca{from{transform:scale(1.06)}}
 
-/* ---------- responsive ---------- */
-@media (max-width:1240px){.header-acciones .btn-claro{display:none}}
-@media (max-width:1040px){
-  nav.principal{display:none}
-  nav.principal.abierto{display:block;position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--linea);padding:12px 24px 20px}
-  nav.principal.abierto ul{flex-direction:column}
-  .menu-btn{display:grid;place-items:center}
-  .header-acciones .btn-claro{display:none}
-  .hero .wrap{grid-template-columns:1fr;gap:40px}
-  .hero-foto{aspect-ratio:16/11}
-  .hero-foto figcaption{left:16px}
-  .tramites{grid-template-columns:1fr 1fr}
-  .tramite:not(:nth-child(3n+1)){padding-left:0;border-left:0}
-  .tramite:nth-child(2n){padding-left:22px;border-left:1px solid var(--linea)}
-  .hoy .wrap{grid-template-columns:1fr 1fr}
-  .hoy-titulo{grid-column:1/-1;padding-bottom:0}
-  .hoy-item{border-left:0;border-top:1px solid #2D4064;padding-left:0}
-  .panel{grid-template-columns:1fr}
-  .panel img{aspect-ratio:16/9;height:auto}
-  .noticias{grid-template-columns:1fr}
-  .campana .caja{grid-template-columns:1fr}
-  .campana .ast-campana{left:auto;right:24px;top:auto;bottom:calc(360px - 60px);width:110px}
-  .contacto .wrap{grid-template-columns:1fr}
-  .emergencias .wrap{grid-template-columns:1fr;gap:20px}
-  footer .grid{grid-template-columns:1fr 1fr}
-  .todos ul{columns:2}
+/* responsive */
+@media (max-width:1080px){
+  nav{display:none}
+  nav.abierto{display:block;position:absolute;top:84px;left:0;right:0;background:#fff;padding:8px 32px 24px;box-shadow:0 12px 24px -12px rgba(0,0,0,.2)}
+  nav.abierto ul{flex-direction:column;gap:0}
+  nav.abierto a{display:block;padding:14px 0;font-size:1.15rem;border-bottom:1px solid var(--linea)}
+  .menu{display:grid;place-items:center}
+  .h-der .tel{display:none}
+  .tramites .wrap,.vos-grid,.not-grid,.ayuda .wrap{grid-template-columns:1fr;gap:48px}
+  .intro{position:static}
+  .campana{grid-template-columns:1fr}
+  .campana img{aspect-ratio:16/10;height:auto}
+  .boletin{grid-column:1}
+  .pie .wrap{grid-template-columns:1fr 1fr}
+  .ficha{max-width:520px}
 }
 @media (max-width:640px){
   body{font-size:17px}
-  .wrap{padding:0 16px}
-  section{padding:64px 0}
-  .util-izq a:nth-child(n+2){display:none}
-  .util-der{display:none}
-  .header-acciones .btn-primario{padding:12px 16px}
-  .hero .wrap{padding-top:40px;padding-bottom:48px}
-  .campo{padding-left:16px}
-  .campo button{padding:14px 18px}
-  .asterisco-gigante{width:140px;right:-50px;top:-40px}
-  .hero-foto figcaption{display:none}
-  .tramites{grid-template-columns:1fr}
-  .tramite,.tramite:nth-child(2n){padding-left:0;border-left:0;padding-right:0}
-  .hoy .wrap{grid-template-columns:1fr}
-  .panel-texto{padding:28px 22px}
-  .todos ul{columns:1}
-  .campana-texto{padding:36px 24px}
-  .campana .ast-campana{display:none}
-  .canales{grid-template-columns:1fr}
-  .emergencias ul{grid-template-columns:repeat(3,1fr)}
-  footer .grid{grid-template-columns:1fr}
+  .wrap{padding:0 20px}
+  header .wrap{height:72px;gap:16px}
+  nav.abierto{top:72px;padding:8px 20px 24px}
+  .ingresar{padding:10px 16px;font-size:.92rem}
+  .hero{min-height:auto}
+  .hero .wrap{padding-top:96px;padding-bottom:110px}
+  .hero::before{background:linear-gradient(0deg,rgba(10,20,40,.88) 0%,rgba(10,20,40,.6) 60%,rgba(10,20,40,.35) 100%)}
+  .campo{padding:6px}
+  .campo label{padding-left:10px}
+  .campo button{padding:0 16px}
+  .populares a{display:inline-block;margin:6px 14px 0 0}
+  .populares span{display:block}
+  .arco{height:60px}
+  .vos .arco-sup{height:60px;top:-59px}
+  .tramites{padding:32px 0 80px}
+  .lista h3{font-size:1.3rem}
+  .lista a{padding:24px 0}
+  .vos{padding:24px 0 90px}
+  .noticias,.ayuda{padding:80px 0}
+  .canales{grid-template-columns:1fr;gap:32px}
+  .camp-txt{padding:56px 20px}
+  .emerg a{padding:0 16px 0 0;margin:0 16px 12px 0}
+  .emerg li+li{border-left:0}
+  .pie .wrap{grid-template-columns:1fr}
+  .legal button{margin:8px 16px 0 0}
 }
 </style>
 </head>
@@ -273,59 +247,34 @@ footer .legal{border-top:1px solid #22355A;margin-top:44px;padding-top:24px;disp
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-buscar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
   <symbol id="i-flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-  <symbol id="i-licencia" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="11" r="2"/><path d="M6 16c.6-1.5 1.7-2.2 3-2.2s2.4.7 3 2.2M14 10h4M14 13.5h3"/></symbol>
-  <symbol id="i-pago" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="2.5" y="6" width="19" height="13" rx="2.5"/><path d="M2.5 10.5h19M6.5 15h4"/></symbol>
-  <symbol id="i-proveedor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M5 8h14l-1.2 11.5a1.5 1.5 0 0 1-1.5 1.3H7.7a1.5 1.5 0 0 1-1.5-1.3Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></symbol>
-  <symbol id="i-comercio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3.5 9 5 4h14l1.5 5a2.8 2.8 0 0 1-5.6 0 2.8 2.8 0 0 1-5.8 0 2.8 2.8 0 0 1-5.6 0Z"/><path d="M5 11.5V20h14v-8.5M10 20v-5h4v5"/></symbol>
-  <symbol id="i-obra" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3 18h18M5 18v-2a7 7 0 0 1 14 0v2M10 9.3V6h4v3.3"/></symbol>
-  <symbol id="i-personal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.8-3.2 3-5 5.5-5s4.7 1.8 5.5 5"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.6c2.3.1 3.9 1.7 4.5 4.4"/></symbol>
-  <symbol id="i-whatsapp" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2A9.7 9.7 0 0 0 3.6 16.8L2.3 21.7l5-1.3A9.7 9.7 0 1 0 12 2.2Zm0 17.7c-1.5 0-2.9-.4-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9Zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.9 2c0 1.2.9 2.3 1 2.5.1.1 1.7 2.6 4.2 3.7 1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1 .1-1.2l-.5-.2Z"/></symbol>
+  <symbol id="i-ast" viewBox="0 0 100 100" fill="currentColor"><path d="M43 4h14l-2.4 33.5 28-18.6 7 12.1L59.6 45.7 89.6 60.6l-7 12.1-28-18.6L57 88H43l2.4-33.9-28 18.6-7-12.1 30-14.9-30-14.8 7-12.1 28 18.6Z"/></symbol>
+  <symbol id="i-arco" viewBox="0 0 66 18"><path d="M2 16C14 3 44 -2 64 10c-6-1.2-11-1.4-16-1C34 10 16 13 2 16Z" fill="currentColor"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M4 20l1.3-4A8.5 8.5 0 1 1 8.4 19Z"/><path d="M9 9.5c.5 2.2 2.3 4 4.5 4.6l1.2-1.1 1.8.8-.3 1.7c-3.7.3-7.3-3.2-7.1-7l1.6-.4.9 1.7Z"/></symbol>
   <symbol id="i-tel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M5 3.5h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.8 6.8l1.4-2.2 4.3 1.7V19a1.5 1.5 0 0 1-1.6 1.5A16.5 16.5 0 0 1 3.5 5.1 1.5 1.5 0 0 1 5 3.5Z"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
-  <symbol id="i-turno" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
-  <symbol id="i-asterisco" viewBox="0 0 100 100" fill="currentColor"><path d="M43 4h14l-2.4 33.5 28-18.6 7 12.1L59.6 45.7 89.6 60.6l-7 12.1-28-18.6L57 88H43l2.4-33.9-28 18.6-7-12.1 30-14.9-30-14.8 7-12.1 28 18.6Z"/></symbol>
-  <symbol id="i-arco" viewBox="0 0 66 18"><path d="M2 16C14 3 44 -2 64 10c-6-1.2-11-1.4-16-1C34 10 16 13 2 16Z" fill="currentColor"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
 </svg>
 
 <a class="skip" href="#contenido">Saltar al contenido</a>
+<div class="aviso">Propuesta conceptual de rediseño, no es el sitio oficial. <a href="index.html">Ver el estudio</a></div>
 
-<div class="aviso-concepto">Propuesta conceptual de rediseño, no es el sitio oficial. <a href="index.html">Ver el estudio que la fundamenta</a></div>
-
-<div class="util">
+<header id="cab">
   <div class="wrap">
-    <div class="util-izq">
-      <a href="#emergencias">147 Atención al vecino</a>
-      <a href="#contacto">WhatsApp municipal</a>
-      <a href="#contacto">Centros de Atención Vecinales</a>
-    </div>
-    <div class="util-der">
-      <button type="button" id="btn-texto" aria-pressed="false">Texto más grande</button>
-      <button type="button" id="btn-contraste" aria-pressed="false">Alto contraste</button>
-    </div>
-  </div>
-</div>
-
-<header class="sitio">
-  <div class="wrap">
-    <a class="logo" href="#" aria-label="Municipio de San Martín, inicio">
-      <svg aria-hidden="true" style="color:var(--cielo)"><use href="#i-arco"/></svg>
-      <span>San Martín</span>
-    </a>
-    <nav class="principal" id="nav" aria-label="Principal">
+    <a class="logo" href="#" aria-label="Municipio de San Martín, inicio"><svg aria-hidden="true"><use href="#i-arco"/></svg><span>San Martín</span></a>
+    <nav id="nav" aria-label="Principal">
       <ul>
-        <li><a href="#tramites" aria-current="page">Trámites</a></li>
-        <li><a href="#programas">Programas</a></li>
-        <li><a href="#novedades">Novedades</a></li>
+        <li><a href="#tramites">Trámites</a></li>
+        <li><a href="#vos">Programas</a></li>
+        <li><a href="#noticias">Noticias</a></li>
         <li><a href="#">Ciudad</a></li>
-        <li><a href="#">Transparencia</a></li>
-        <li><a href="#">Institucional</a></li>
+        <li><a href="#">Gobierno</a></li>
       </ul>
     </nav>
-    <div class="header-acciones">
-      <a class="btn btn-claro" href="#">Mi San Martín</a>
-      <a class="btn btn-primario" href="#tramites">Hacé un trámite</a>
-      <button class="menu-btn" type="button" aria-controls="nav" aria-expanded="false" aria-label="Abrir menú">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    <div class="h-der">
+      <a class="tel" href="tel:147">Atención al vecino <b>147</b></a>
+      <a class="ingresar" href="#">Mi San Martín</a>
+      <button class="menu" type="button" aria-controls="nav" aria-expanded="false" aria-label="Abrir menú">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
       </button>
     </div>
   </div>
@@ -333,311 +282,196 @@ footer .legal{border-top:1px solid #22355A;margin-top:44px;padding-top:24px;disp
 
 <main id="contenido">
 
-<section class="hero" aria-labelledby="titulo-hero" style="padding:0">
+<section class="hero" aria-labelledby="h1">
+  <img src="img/hero.jpg" alt="" width="1800" height="1012">
   <div class="wrap">
+    <h1 id="h1">¿Qué necesitás hacer hoy?</h1>
+    <p class="hero-sub">Trámites, pagos, turnos y reclamos del Municipio, en un solo lugar.</p>
+    <form class="buscar" role="search" onsubmit="return false">
+      <div class="campo">
+        <label for="q"><svg aria-hidden="true"><use href="#i-buscar"/></svg><span class="sr-only">Buscá un trámite o servicio</span>
+          <input id="q" type="search" autocomplete="off" placeholder="¿Qué estás buscando?" aria-controls="sug" aria-expanded="false"></label>
+        <button type="submit">Buscar</button>
+      </div>
+      <ul class="sug" id="sug" role="listbox" aria-label="Sugerencias"></ul>
+    </form>
+    <p class="populares"><span>Lo más buscado</span><a href="#">Licencia de conducir</a><a href="#">Pagar tasas</a><a href="#">Boleta digital</a><a href="#">Turnos de salud</a></p>
+  </div>
+  <svg class="arco" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 120V92C380 -8 980 -14 1440 62V120Z" fill="#fff"/></svg>
+</section>
+
+<section class="tramites" id="tramites" aria-labelledby="t-tram">
+  <div class="wrap">
+    <div class="intro">
+      <h2 id="t-tram">Trámites frecuentes</h2>
+      <p>Los que más hacen los vecinos. Todos se pueden iniciar desde el celular.</p>
+      <a class="enlace" href="#">Ver todos los trámites</a>
+    </div>
+    <ul class="lista">
+      <li><a href="#"><div><h3>Licencia de conducir</h3><p>Sacá turno para obtenerla, renovarla o pedir un duplicado.</p></div><span class="fl"><svg aria-hidden="true"><use href="#i-flecha"/></svg></span></a></li>
+      <li><a href="#"><div><h3>Pagar tasas municipales</h3><p>Pagá online con ALSMI y descargá tus comprobantes.</p></div><span class="fl"><svg aria-hidden="true"><use href="#i-flecha"/></svg></span></a></li>
+      <li><a href="#"><div><h3>Habilitar un comercio o industria</h3><p>Iniciá la habilitación o actualizá los datos de tu empresa.</p></div><span class="fl"><svg aria-hidden="true"><use href="#i-flecha"/></svg></span></a></li>
+      <li><a href="#"><div><h3>Obras particulares</h3><p>Presentá planos y seguí el estado de tu expediente.</p></div><span class="fl"><svg aria-hidden="true"><use href="#i-flecha"/></svg></span></a></li>
+      <li><a href="#"><div><h3>Portal de Proveedores</h3><p>Inscribite y seguí tus facturas y licitaciones.</p></div><span class="fl"><svg aria-hidden="true"><use href="#i-flecha"/></svg></span></a></li>
+      <li><a href="#"><div><h3>Personal del Municipio</h3><p>Recibos de sueldo, licencias y trámites internos.</p></div><span class="fl"><svg aria-hidden="true"><use href="#i-flecha"/></svg></span></a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="vos" id="vos" aria-labelledby="t-vos">
+  <svg class="arco-sup" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 120V92C380 -8 980 -14 1440 62V120Z" fill="#0E1B33"/></svg>
+  <div class="wrap">
+    <div class="cab">
+      <h2 id="t-vos" class="sec-titulo">Programas para vos</h2>
+      <p>Elegí tu etapa o tu situación y mirá lo que el Municipio ofrece.</p>
+    </div>
+    <div class="vos-grid">
+      <ul class="publicos" role="tablist" aria-orientation="vertical" aria-label="Programas por público"></ul>
+      <div class="ficha" role="tabpanel" id="ficha" aria-live="polite">
+        <img id="f-img" src="img/infancias.jpg" alt="">
+        <p id="f-txt"></p>
+        <p class="dato" id="f-dato"></p>
+        <a class="enlace" id="f-link" href="#"></a>
+      </div>
+    </div>
+    <p class="todos">También: Ambiente, Cultura, Deportes, Derechos Humanos, Educación, Empleo y Formación, Salud, Seguridad, Turismo y Recreación. <a class="enlace" href="#">Ver los 18 programas</a></p>
+  </div>
+</section>
+
+<section class="noticias" id="noticias" aria-labelledby="t-not">
+  <div class="wrap">
+    <div class="cab-fila">
+      <h2 id="t-not" class="sec-titulo">Noticias</h2>
+      <a class="enlace" href="#">Todas las noticias</a>
+    </div>
+    <div class="not-grid">
+      <article class="destacada"><a href="#">
+        <img src="img/pymes.jpg" alt="Dueña de un taller metalúrgico trabajando en un torno junto a un joven">
+        <span class="cat">PyMEs</span>
+        <h3>San Martín declara la Emergencia para las Micro, Pequeñas y Medianas Empresas</h3>
+      </a></article>
+      <ul class="notas">
+        <li><a href="#"><span class="cat">Educación</span><h3>Más de 1.500 estudiantes pasaron por la Expo Proyectá Futuro de San Martín</h3></a></li>
+        <li><a href="#"><span class="cat">Cultura</span><h3>Junto a Tigre, San Isidro y Vicente López presentamos el Camino de la Reconquista, a 220 años de la recuperación de Buenos Aires</h3></a></li>
+        <li><a href="#"><span class="cat">Obras públicas</span><h3>Siguen los operativos integrales de limpieza y mejoras, esta vez en Carcova</h3></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="campana" aria-labelledby="t-camp">
+  <img src="img/obras.jpg" alt="Cuadrilla municipal plantando flores en una calle empedrada">
+  <div class="camp-txt">
+    <h2 id="t-camp"><span class="l1">Más comunidad<svg aria-hidden="true"><use href="#i-ast"/></svg></span><span>menos basura</span></h2>
+    <p>Mantener la ciudad limpia es un compromiso de todos. Consultá los días de recolección de tu barrio y dónde llevar lo reciclable.</p>
+    <a class="enlace" href="#">Ver horarios de mi barrio</a>
+  </div>
+</section>
+
+<section class="ayuda" id="ayuda" aria-labelledby="t-ayuda">
+  <div class="wrap">
+    <div class="intro">
+      <h2 id="t-ayuda" class="sec-titulo">¿Necesitás ayuda?</h2>
+      <p>Escribinos, llamanos o acercate. Te respondemos por el canal que te quede más cómodo.</p>
+    </div>
     <div>
-      <h1 id="titulo-hero">¿Qué necesitás hacer hoy<span class="ast" aria-hidden="true">*</span><span class="sr-only">?</span></h1>
-      <p class="hero-bajada">Trámites, pagos, turnos y reclamos del Municipio de San Martín, en un solo lugar y desde el celular.</p>
-
-      <form class="buscador" role="search" onsubmit="return false">
-        <label for="q">Buscá un trámite o servicio</label>
-        <div class="campo">
-          <svg aria-hidden="true"><use href="#i-buscar"/></svg>
-          <input id="q" type="search" autocomplete="off" placeholder="Ej.: licencia, tasas, turno" aria-controls="sug" aria-expanded="false">
-          <button type="submit">Buscar</button>
-        </div>
-        <ul class="sugerencias" id="sug" role="listbox" aria-label="Sugerencias"></ul>
+      <div class="canales">
+        <a class="canal" href="#"><svg aria-hidden="true"><use href="#i-wa"/></svg><h3>WhatsApp</h3><p>Consultas y reclamos por mensaje.</p></a>
+        <a class="canal" href="tel:147"><svg aria-hidden="true"><use href="#i-tel"/></svg><h3>Línea 147</h3><p>Atención al vecino por teléfono.</p></a>
+        <a class="canal" href="#"><svg aria-hidden="true"><use href="#i-pin"/></svg><h3>Centros de atención</h3><p>Encontrá el más cercano a tu casa.</p></a>
+        <a class="canal" href="#"><svg aria-hidden="true"><use href="#i-cal"/></svg><h3>Turnos online</h3><p>Salud, licencias y atención presencial.</p></a>
+      </div>
+      <form class="boletin" onsubmit="return false">
+        <label for="mail">Recibí las novedades cada semana</label>
+        <input id="mail" type="email" autocomplete="email" placeholder="tu@correo.com">
+        <button type="submit">Suscribirme</button>
+        <small>Obras en tu barrio, cursos, eventos y beneficios. Te das de baja cuando quieras.</small>
       </form>
-
-      <div class="atajos">
-        <span>Lo más buscado:</span>
-        <a href="#">Renovar licencia</a>
-        <a href="#">Pagar tasas ALSMI</a>
-        <a href="#">Boleta digital</a>
-        <a href="#">Estacionamiento medido</a>
-      </div>
-    </div>
-
-    <figure class="hero-foto" style="margin:0">
-      <svg class="asterisco-gigante" aria-hidden="true" viewBox="0 0 100 100"><use href="#i-asterisco"/></svg>
-      <img src="img/hero.jpg" alt="Calle arbolada de un barrio de San Martín con vecinos caminando al atardecer" width="1800" height="1012">
-      <figcaption><strong>Más comunidad, menos basura</strong>Conocé los días y horarios de recolección de tu barrio.</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section id="tramites" aria-labelledby="t-tramites">
-  <div class="wrap">
-    <div class="cabecera">
-      <div>
-        <h2 id="t-tramites">Trámites frecuentes</h2>
-        <p>Los seis trámites que más hacen los vecinos. Todos se pueden iniciar online.</p>
-      </div>
-      <a class="btn btn-claro" href="#">Ver todos los trámites</a>
-    </div>
-
-    <div class="tramites">
-      <a class="tramite" href="#">
-        <span class="ico"><svg aria-hidden="true"><use href="#i-licencia"/></svg></span>
-        <span><h3>Licencia de conducir</h3><p>Pedí turno para sacar, renovar o duplicar tu licencia.</p></span>
-        <svg class="flecha" aria-hidden="true"><use href="#i-flecha"/></svg>
-      </a>
-      <a class="tramite" href="#">
-        <span class="ico"><svg aria-hidden="true"><use href="#i-pago"/></svg></span>
-        <span><h3>Pago online ALSMI</h3><p>Pagá tasas municipales y descargá tus comprobantes.</p></span>
-        <svg class="flecha" aria-hidden="true"><use href="#i-flecha"/></svg>
-      </a>
-      <a class="tramite" href="#">
-        <span class="ico"><svg aria-hidden="true"><use href="#i-proveedor"/></svg></span>
-        <span><h3>Portal de Proveedores</h3><p>Inscribite y seguí tus facturas y licitaciones.</p></span>
-        <svg class="flecha" aria-hidden="true"><use href="#i-flecha"/></svg>
-      </a>
-      <a class="tramite" href="#">
-        <span class="ico"><svg aria-hidden="true"><use href="#i-comercio"/></svg></span>
-        <span><h3>Comercios e industrias</h3><p>Habilitá tu local o actualizá los datos de tu empresa.</p></span>
-        <svg class="flecha" aria-hidden="true"><use href="#i-flecha"/></svg>
-      </a>
-      <a class="tramite" href="#">
-        <span class="ico"><svg aria-hidden="true"><use href="#i-obra"/></svg></span>
-        <span><h3>Obras particulares</h3><p>Presentá planos y consultá el estado de tu expediente.</p></span>
-        <svg class="flecha" aria-hidden="true"><use href="#i-flecha"/></svg>
-      </a>
-      <a class="tramite" href="#">
-        <span class="ico"><svg aria-hidden="true"><use href="#i-personal"/></svg></span>
-        <span><h3>Personal del Municipio</h3><p>Recibos de sueldo, licencias y trámites internos.</p></span>
-        <svg class="flecha" aria-hidden="true"><use href="#i-flecha"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<aside class="hoy" aria-label="Hoy en San Martín">
-  <div class="wrap">
-    <p class="hoy-titulo">Hoy en San Martín</p>
-    <div class="hoy-item"><small>Recolección</small><strong>Días y horarios de recolección</strong><br><a href="#">Ver tu barrio</a></div>
-    <div class="hoy-item"><small>Salud</small><strong>Farmacias de turno</strong><br><a href="#">Ver cerca tuyo</a></div>
-    <div class="hoy-item"><small>Agenda</small><strong>Cursos y talleres gratuitos</strong><br><a href="#">Inscribite</a></div>
-  </div>
-</aside>
-
-<section class="programas" id="programas" aria-labelledby="t-programas">
-  <div class="wrap">
-    <div class="cabecera">
-      <div>
-        <h2 id="t-programas">Programas para vos</h2>
-        <p>Elegí tu etapa o situación y encontrá lo que el Municipio ofrece.</p>
-      </div>
-    </div>
-
-    <div class="pestanas" role="tablist" aria-label="Programas por público">
-      <button role="tab" id="tab-1" aria-controls="p-1" aria-selected="true">Infancias</button>
-      <button role="tab" id="tab-2" aria-controls="p-2" aria-selected="false" tabindex="-1">Juventudes</button>
-      <button role="tab" id="tab-3" aria-controls="p-3" aria-selected="false" tabindex="-1">Personas mayores</button>
-      <button role="tab" id="tab-4" aria-controls="p-4" aria-selected="false" tabindex="-1">Personas con discapacidad</button>
-      <button role="tab" id="tab-5" aria-controls="p-5" aria-selected="false" tabindex="-1">Mujeres y diversidades</button>
-      <button role="tab" id="tab-6" aria-controls="p-6" aria-selected="false" tabindex="-1">PyMEs</button>
-    </div>
-
-    <div class="panel" role="tabpanel" id="p-1" aria-labelledby="tab-1">
-      <img src="img/infancias.jpg" alt="Niñas y niños jugando en una plaza del barrio">
-      <div class="panel-texto">
-        <h3>Infancias</h3>
-        <p>Políticas para garantizar los derechos, promover el desarrollo integral y el buen vivir de las niñas, los niños y adolescentes de nuestra ciudad.</p>
-        <div class="panel-datos">Vacunación, jardines municipales, colonias de verano y espacios de juego.</div>
-        <a class="btn btn-primario" href="#">Ver programas de Infancias</a>
-      </div>
-    </div>
-    <div class="panel" role="tabpanel" id="p-2" aria-labelledby="tab-2" hidden>
-      <img src="img/educacion.jpg" alt="Jóvenes en el patio de una escuela secundaria">
-      <div class="panel-texto">
-        <h3>Juventudes</h3>
-        <p>Propuestas participativas, solidarias, recreativas, deportivas, artísticas, formativas y comunitarias para adolescentes y jóvenes de la ciudad.</p>
-        <div class="panel-datos">Volvé a la escuela, Expo Proyectá Futuro y becas de formación.</div>
-        <a class="btn btn-primario" href="#">Ver programas de Juventudes</a>
-      </div>
-    </div>
-    <div class="panel" role="tabpanel" id="p-3" aria-labelledby="tab-3" hidden>
-      <img src="img/atencion.jpg" alt="Una empleada municipal atiende a una vecina mayor en un centro de atención">
-      <div class="panel-texto">
-        <h3>Personas mayores</h3>
-        <p>Programas para la promoción y protección de derechos de las personas mayores, que fomentan el envejecimiento saludable y el cuidado en la comunidad.</p>
-        <div class="panel-datos">Centros de jubilados, talleres, turismo social y acompañamiento.</div>
-        <a class="btn btn-primario" href="#">Ver programas para personas mayores</a>
-      </div>
-    </div>
-    <div class="panel" role="tabpanel" id="p-4" aria-labelledby="tab-4" hidden>
-      <img src="img/atencion.jpg" alt="Atención presencial a vecinos en un centro municipal">
-      <div class="panel-texto">
-        <h3>Personas con discapacidad</h3>
-        <p>Promovemos la igualdad de oportunidades, la accesibilidad y la defensa de los derechos.</p>
-        <div class="panel-datos">Dirección de Personas con Discapacidad: Belgrano 3747, planta baja.<br>Teléfono <a href="tel:+541148300598">4830-0598</a> / 0623 / 0838. <a href="mailto:discapacidad@sanmartin.gob.ar">discapacidad@sanmartin.gob.ar</a></div>
-        <a class="btn btn-primario" href="#">Ver programas y certificados</a>
-      </div>
-    </div>
-    <div class="panel" role="tabpanel" id="p-5" aria-labelledby="tab-5" hidden>
-      <img src="img/atencion.jpg" alt="Vecinas en un espacio comunitario municipal">
-      <div class="panel-texto">
-        <h3>Mujeres y diversidades</h3>
-        <p>Promovemos la igualdad de derechos y oportunidades de todas las mujeres y las personas de la diversidad sexual en las distintas etapas y ámbitos de la vida.</p>
-        <div class="panel-datos">Atención y acompañamiento ante situaciones de violencia: línea 144, las 24 horas.</div>
-        <a class="btn btn-primario" href="#">Ver programas</a>
-      </div>
-    </div>
-    <div class="panel" role="tabpanel" id="p-6" aria-labelledby="tab-6" hidden>
-      <img src="img/pymes.jpg" alt="Dueña de un taller metalúrgico trabaja junto a un joven en un torno">
-      <div class="panel-texto">
-        <h3>PyMEs</h3>
-        <p>San Martín declaró la Emergencia para las Micro, Pequeñas y Medianas Empresas. Conocé los beneficios, planes de pago y líneas de apoyo vigentes.</p>
-        <div class="panel-datos">Capital Nacional de la Industria: acompañamos a quienes producen y dan trabajo en la ciudad.</div>
-        <a class="btn btn-primario" href="#">Ver beneficios para PyMEs</a>
-      </div>
-    </div>
-
-    <div class="todos">
-      <h3>Todos los programas</h3>
-      <ul>
-        <li><a href="#">Ambiente</a></li><li><a href="#">Cultura</a></li><li><a href="#">Deportes</a></li>
-        <li><a href="#">Derechos Humanos</a></li><li><a href="#">Desarrollo social</a></li><li><a href="#">Educación</a></li>
-        <li><a href="#">Empleo y Formación</a></li><li><a href="#">Infancias</a></li><li><a href="#">Juventudes</a></li>
-        <li><a href="#">Mujeres y diversidades</a></li><li><a href="#">Plan Estratégico de Obras</a></li><li><a href="#">Personas con discapacidad</a></li>
-        <li><a href="#">Personas mayores</a></li><li><a href="#">PyMEs</a></li><li><a href="#">Salud</a></li>
-        <li><a href="#">Seguridad</a></li><li><a href="#">Turismo y Recreación</a></li><li><a href="#">Transparencia</a></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="novedades" aria-labelledby="t-novedades">
-  <div class="wrap">
-    <div class="cabecera">
-      <h2 id="t-novedades">Novedades</h2>
-      <a class="btn btn-claro" href="#">Ver todas las noticias</a>
-    </div>
-    <div class="noticias">
-      <article class="nota-principal">
-        <a href="#">
-          <img src="img/pymes.jpg" alt="Taller metalúrgico familiar de San Martín">
-          <span class="etiqueta">PyMEs</span>
-          <h3>San Martín declara la Emergencia para las Micro, Pequeñas y Medianas Empresas</h3>
-                  </a>
-      </article>
-      <ul class="lista-notas">
-        <li><a href="#"><span class="etiqueta">Educación</span><h3>Más de 1.500 estudiantes pasaron por la Expo Proyectá Futuro de San Martín</h3></a></li>
-        <li><a href="#"><span class="etiqueta">Cultura</span><h3>San Martín presentó junto a Tigre, San Isidro y Vicente López el Camino de la Reconquista, a 220 años de la recuperación de Buenos Aires</h3></a></li>
-        <li><a href="#"><span class="etiqueta">Obras públicas</span><h3>Continúan los operativos integrales de limpieza y mejoras, esta vez en Carcova</h3></a></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="campana" aria-labelledby="t-campana">
-  <div class="wrap">
-    <div class="caja">
-      <div class="campana-texto">
-        <h2 id="t-campana">Más comunidad<span>menos basura</span></h2>
-        <p>Mantener la ciudad limpia es un compromiso de todos. Consultá horarios de recolección, puntos verdes y cómo pedir el retiro de residuos voluminosos.</p>
-        <a class="btn btn-primario" href="#" style="align-self:flex-start">Ver horarios de mi barrio</a>
-      </div>
-      <img src="img/obras.jpg" alt="Cuadrilla municipal de limpieza plantando flores en una calle empedrada">
-      <svg class="ast-campana" aria-hidden="true" viewBox="0 0 100 100"><use href="#i-asterisco"/></svg>
-    </div>
-  </div>
-</section>
-
-<section class="contacto" id="contacto" aria-labelledby="t-contacto">
-  <div class="wrap">
-    <div class="boletin">
-      <h2 id="t-contacto">Enterate primero</h2>
-      <form onsubmit="return false">
-        <label for="mail">Tu correo electrónico</label>
-        <input id="mail" type="email" autocomplete="email" placeholder="nombre@correo.com">
-        <button class="btn btn-primario" type="submit">Suscribirme</button>
-      </form>
-      <p>Recibí cada semana las novedades del Municipio: obras en tu barrio, cursos, eventos y beneficios. Podés darte de baja cuando quieras.</p>
-    </div>
-    <div class="canales">
-      <a class="canal" href="#"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg><strong>WhatsApp</strong><span>Consultas y reclamos</span></a>
-      <a class="canal" href="tel:147"><svg aria-hidden="true"><use href="#i-tel"/></svg><strong>147</strong><span>Atención al vecino</span></a>
-      <a class="canal" href="#"><svg aria-hidden="true"><use href="#i-pin"/></svg><strong>Centros de atención</strong><span>Encontrá el más cercano a tu casa</span></a>
-      <a class="canal" href="#"><svg aria-hidden="true"><use href="#i-turno"/></svg><strong>Turnos online</strong><span>Salud, licencias y atención presencial</span></a>
     </div>
   </div>
 </section>
 
 </main>
 
-<section class="emergencias" id="emergencias" aria-labelledby="t-emerg">
-  <div class="wrap">
-    <h2 id="t-emerg">Teléfonos útiles</h2>
-    <ul>
-      <li><a href="tel:147"><b>147</b><small>Municipio</small></a></li>
-      <li><a href="tel:911"><b>911</b><small>Policía</small></a></li>
-      <li><a href="tel:107"><b>107</b><small>Emergencias médicas</small></a></li>
-      <li><a href="tel:100"><b>100</b><small>Bomberos</small></a></li>
-      <li><a href="tel:103"><b>103</b><small>Defensa civil</small></a></li>
-    </ul>
-  </div>
-</section>
-
 <footer>
-  <div class="wrap">
-    <div class="grid">
+  <div class="emerg">
+    <div class="wrap">
+      <h2>Teléfonos útiles</h2>
+      <ul>
+        <li><a href="tel:147"><b>147</b><small>Municipio</small></a></li>
+        <li><a href="tel:911"><b>911</b><small>Policía</small></a></li>
+        <li><a href="tel:107"><b>107</b><small>Emergencias</small></a></li>
+        <li><a href="tel:100"><b>100</b><small>Bomberos</small></a></li>
+        <li><a href="tel:103"><b>103</b><small>Defensa civil</small></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="pie">
+    <div class="wrap">
       <div>
-        <a class="logo" href="#" aria-label="Municipio de San Martín, inicio">
-          <svg aria-hidden="true" style="color:var(--cielo)"><use href="#i-arco"/></svg>
-          <span>San Martín</span>
-        </a>
-        <p style="margin-top:18px">Municipalidad de San Martín<br>Belgrano 3747, San Martín, Buenos Aires</p>
-              </div>
-      <div><h3>Gestión</h3><ul><li><a href="#">Trámites</a></li><li><a href="#">Pagos y tasas</a></li><li><a href="#">Portal de Proveedores</a></li><li><a href="#">Boletín oficial</a></li></ul></div>
+        <a class="logo" href="#" aria-label="Municipio de San Martín, inicio"><svg aria-hidden="true"><use href="#i-arco"/></svg><span>San Martín</span></a>
+        <p>Municipalidad de San Martín<br>Belgrano 3747, San Martín, Buenos Aires</p>
+      </div>
+      <div><h3>Gestión</h3><ul><li><a href="#">Trámites</a></li><li><a href="#">Pagos y tasas</a></li><li><a href="#">Proveedores</a></li><li><a href="#">Boletín oficial</a></li></ul></div>
       <div><h3>Gobierno</h3><ul><li><a href="#">Institucional</a></li><li><a href="#">Transparencia</a></li><li><a href="#">Plan Estratégico de Obras</a></li><li><a href="#">Prensa</a></li></ul></div>
       <div><h3>Seguinos</h3><ul><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li><li><a href="#">YouTube</a></li><li><a href="#">X</a></li></ul></div>
     </div>
-    <div class="legal">
-      <span>© Municipalidad de San Martín 2026</span>
-      <span>Propuesta conceptual, no oficial</span>
+  </div>
+  <div class="legal">
+    <div class="wrap">
+      <span>© Municipalidad de San Martín 2026. Propuesta conceptual, no oficial.</span>
+      <span>Accesibilidad:<button type="button" id="b-texto" aria-pressed="false">Texto más grande</button><button type="button" id="b-contraste" aria-pressed="false">Alto contraste</button></span>
     </div>
   </div>
 </footer>
 
-<a class="btn-subir" href="#" aria-label="Escribinos por WhatsApp"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
-
 <script>
-// Menú móvil
-const mb=document.querySelector('.menu-btn'),nav=document.getElementById('nav');
+// sombra del header al hacer scroll
+const cab=document.getElementById('cab');
+addEventListener('scroll',()=>cab.classList.toggle('con-sombra',scrollY>10),{passive:true});
+
+// menú móvil
+const mb=document.querySelector('.menu'),nav=document.getElementById('nav');
 mb.addEventListener('click',()=>{const o=nav.classList.toggle('abierto');mb.setAttribute('aria-expanded',o);mb.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú')});
 
-// Buscador con sugerencias
-const T=[
- ['Licencia de conducir: turno para renovar','Tránsito'],['Licencia de conducir: primera vez','Tránsito'],
- ['Pago online ALSMI','Tasas'],['Boleta digital de tasas','Tasas'],['Plan de pagos para contribuyentes','Tasas'],
- ['Tasa automotor','Tasas'],['Estacionamiento medido','Tránsito'],['Habilitación de comercios','Comercios e industrias'],
- ['Obras particulares: presentar planos','Obras'],['Turno en centro de salud','Salud'],['Reclamo por alumbrado o bacheo','147'],
- ['Retiro de residuos voluminosos','Ambiente'],['Cursos y talleres gratuitos','Empleo y Formación'],['Portal de Proveedores','Compras'],
- ['Certificado de discapacidad','Discapacidad'],['Archivo de la Memoria','Derechos Humanos']
-];
+// buscador
+const T=[['Licencia de conducir: renovar','Tránsito'],['Licencia de conducir: primera vez','Tránsito'],['Pagar tasas municipales (ALSMI)','Tasas'],['Boleta digital','Tasas'],['Plan de pagos para contribuyentes','Tasas'],['Tasa automotor','Tasas'],['Estacionamiento medido','Tránsito'],['Habilitación de comercios','Comercios'],['Obras particulares: presentar planos','Obras'],['Turno en centro de salud','Salud'],['Reclamo por alumbrado o bacheo','147'],['Retiro de residuos voluminosos','Ambiente'],['Cursos y talleres gratuitos','Empleo'],['Portal de Proveedores','Compras'],['Certificado de discapacidad','Discapacidad'],['Archivo de la Memoria','Derechos Humanos']];
 const q=document.getElementById('q'),sug=document.getElementById('sug');
-const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
-q.addEventListener('input',()=>{
-  const v=norm(q.value.trim());
+const n=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+q.addEventListener('input',()=>{const v=n(q.value.trim());
   if(!v){sug.classList.remove('abierto');q.setAttribute('aria-expanded','false');return}
-  const r=T.filter(t=>norm(t[0]+' '+t[1]).includes(v)).slice(0,6);
-  sug.innerHTML=r.length?r.map(t=>`<li role="option"><a href="#">${t[0]}<small>${t[1]}</small></a></li>`).join('')
-    :`<li><a href="#contacto">No encontramos "${q.value.replace(/</g,'&lt;')}". Escribinos por WhatsApp y te ayudamos.<small>Ayuda</small></a></li>`;
-  sug.classList.add('abierto');q.setAttribute('aria-expanded','true');
-});
-document.addEventListener('click',e=>{if(!e.target.closest('.buscador'))sug.classList.remove('abierto')});
+  const r=T.filter(t=>n(t.join(' ')).includes(v)).slice(0,6);
+  sug.innerHTML=r.length?r.map(t=>`<li role="option"><a href="#">${t[0]}<small>${t[1]}</small></a></li>`).join(''):`<li><a href="#ayuda">No encontramos “${q.value.replace(/</g,'&lt;')}”. Escribinos y te ayudamos.<small>Ayuda</small></a></li>`;
+  sug.classList.add('abierto');q.setAttribute('aria-expanded','true')});
+document.addEventListener('click',e=>{if(!e.target.closest('.buscar'))sug.classList.remove('abierto')});
 q.addEventListener('keydown',e=>{if(e.key==='Escape')sug.classList.remove('abierto')});
 
-// Pestañas accesibles (flechas izquierda/derecha)
-const tabs=[...document.querySelectorAll('[role=tab]')];
-function sel(t){tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on})}
-tabs.forEach((t,i)=>{t.addEventListener('click',()=>sel(t));t.addEventListener('keydown',e=>{
-  if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];sel(n);n.focus()}})});
+// programas por público
+const P=[
+ {n:'Infancias',img:'infancias',alt:'Niñas y niños jugando en una plaza',t:'Políticas para garantizar los derechos, el desarrollo integral y el buen vivir de las niñas, los niños y adolescentes de la ciudad.',d:'',l:'Ver programas de Infancias'},
+ {n:'Juventudes',img:'educacion',alt:'Estudiantes conversando en el patio de una escuela',t:'Propuestas participativas, deportivas, artísticas, formativas y comunitarias para adolescentes y jóvenes.',d:'Incluye Volvé a la escuela y la Expo Proyectá Futuro.',l:'Ver programas de Juventudes'},
+ {n:'Personas mayores',img:'atencion',alt:'Una empleada municipal atiende a una vecina mayor',t:'Promoción y protección de derechos, envejecimiento saludable y redes de cuidado en la comunidad.',d:'',l:'Ver programas para personas mayores'},
+ {n:'Personas con discapacidad',img:'discapacidad',alt:'Joven en silla de ruedas y un amigo en una rampa de una plaza',t:'Igualdad de oportunidades, accesibilidad y defensa de los derechos.',d:'Belgrano 3747, planta baja. Tel. <a href="tel:+541148300598">4830-0598</a>. <a href="mailto:discapacidad@sanmartin.gob.ar">discapacidad@sanmartin.gob.ar</a>',l:'Ver programas y certificados'},
+ {n:'Mujeres y diversidades',img:'mujeres',alt:'Mujeres de distintas edades en un taller comunitario',t:'Igualdad de derechos y oportunidades para todas las mujeres y las personas de la diversidad sexual, en cada etapa de la vida.',d:'',l:'Ver programas'},
+ {n:'PyMEs',img:'pymes',alt:'Taller metalúrgico familiar',t:'San Martín declaró la Emergencia para las Micro, Pequeñas y Medianas Empresas. Conocé los beneficios y planes de pago vigentes.',d:'',l:'Ver beneficios para PyMEs'}
+];
+P.forEach(p=>{const i=new Image();i.src='img/'+p.img+'.jpg'});
+const ul=document.querySelector('.publicos'),fi=document.getElementById('f-img'),ft=document.getElementById('f-txt'),fd=document.getElementById('f-dato'),fl=document.getElementById('f-link');
+ul.innerHTML=P.map((p,i)=>`<li><button role="tab" id="pb${i}" aria-controls="ficha" aria-selected="${i===0}" tabindex="${i===0?0:-1}"><svg class="ast" aria-hidden="true"><use href="#i-ast"/></svg>${p.n}</button></li>`).join('');
+const bs=[...ul.querySelectorAll('button')];
+function elegir(i,foco){const p=P[i];
+  bs.forEach((b,j)=>{b.setAttribute('aria-selected',j===i);b.tabIndex=j===i?0:-1});
+  document.getElementById('ficha').setAttribute('aria-labelledby','pb'+i);
+  fi.src='img/'+p.img+'.jpg';fi.alt=p.alt;ft.textContent=p.t;fd.innerHTML=p.d;fd.hidden=!p.d;fl.textContent=p.l;
+  if(foco)bs[i].focus()}
+bs.forEach((b,i)=>{b.addEventListener('click',()=>elegir(i));
+  b.addEventListener('mouseenter',()=>{if(matchMedia('(hover:hover)').matches)elegir(i)});
+  b.addEventListener('keydown',e=>{const k=e.key;if(k==='ArrowDown'||k==='ArrowRight'){e.preventDefault();elegir((i+1)%bs.length,1)}if(k==='ArrowUp'||k==='ArrowLeft'){e.preventDefault();elegir((i+bs.length-1)%bs.length,1)}})});
+elegir(0);
 
-// Preferencias de lectura
-const bt=document.getElementById('btn-texto'),bc=document.getElementById('btn-contraste');
-bt.addEventListener('click',()=>{const on=bt.getAttribute('aria-pressed')!=='true';bt.setAttribute('aria-pressed',on);document.body.style.fontSize=on?'21px':''});
+// accesibilidad
+const bt=document.getElementById('b-texto'),bc=document.getElementById('b-contraste');
+bt.addEventListener('click',()=>{const on=bt.getAttribute('aria-pressed')!=='true';bt.setAttribute('aria-pressed',on);document.documentElement.style.fontSize=on?'118%':''});
 bc.addEventListener('click',()=>{const on=bc.getAttribute('aria-pressed')!=='true';bc.setAttribute('aria-pressed',on);document.documentElement.style.filter=on?'contrast(1.25)':''});
 </script>
 </body>
