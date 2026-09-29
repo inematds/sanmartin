@@ -6,5 +6,6 @@ Estudo de caso: diagnóstico do site da Municipalidad de San Martín (sanmartin.
 
 - `index.html` — o estudo (PT)
 - `proposta.html` — a home proposta (ES-AR)
+- `proposta-v3.html` — versão 3, estilo "mesa de trabalho" (post-its, fichas, pastas, comprovante), em PT, com `en/` e `es/`; gerada por `python3 tools/build-v3.py` a partir de `tools/v3/`
 
 Proposta conceitual para fins educacionais, **não é o site oficial**. As fotos foram geradas por IA (flux-2-klein).
